@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="3">
+    <title>EV HUB | Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="stations-page">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">⚡ EV HUB</div>
+
+        <nav class="sidebar-nav">
+            <a href="/">▦ Dashboard</a>
+            <a href="/stations">◎ Stations</a>
+            <a href="/sessions">▤ Live Sessions</a>
+            <a href="/request">♙ Charging Request</a>
+            <a href="/admin" class="active">⚙ Admin</a>
+        </nav>
+    </aside>
+
+    <main class="stations-main">
+
+        <header class="topbar">
+            <div>
+                <small>Pages / Admin</small>
+                <h2>System Administration</h2>
+            </div>
+            <span class="green">● System Online</span>
+        </header>
+
+        <section class="session-stats">
+
+            <div class="session-card">
+                <small>Total EV Requests</small>
+                <h2>{{ data.total_requests }}</h2>
+            </div>
+
+            <div class="session-card">
+                <small>Active Charging Sessions</small>
+                <h2 class="green">{{ data.active_sessions }}</h2>
+            </div>
+
+            <div class="session-card">
+                <small>Available Chargers</small>
+                <h2>{{ data.available_chargers }}</h2>
+            </div>
+
+        </section>
+
+        <section class="charger-section">
+            <h3>Charging Infrastructure Management</h3>
+
+            <div class="charger-grid">
+                {% for charger in data.chargers %}
+
+                <div class="charger-card">
+                    <div class="charger-symbol">⚡</div>
+
+                    <h3>Charging Point {{ loop.index }}</h3>
+
+                    <p class="{% if charger == 'Available' %}green{% else %}charger-status{% endif %}">
+                        ● {{ charger }}
+                    </p>
+                </div>
+
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="activity-section">
+            <h3>System Activity Log</h3>
+
+            {% if data.events %}
+                {% for event in data.events %}
+                    <div class="activity-item">
+                        <span class="green">●</span>
+                        <p>{{ event }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="empty-message">No system activity recorded yet.</p>
+            {% endif %}
+
+        </section>
+
+    </main>
+
+</body>
+</html>

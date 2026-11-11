@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV HUB | Home</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="home-page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">⚡ EV HUB</div>
+
+        <nav class="sidebar-nav">
+            <a href="/" class="active">▦ Dashboard</a>
+            <a href="/stations">◎ Stations</a>
+            <a href="/sessions">▤ Live Sessions</a>
+            <a href="/request">♙ Charging Request</a>
+            <a href="/admin">⚙ Admin</a>
+        </nav>
+
+        <div class="my-cars">
+            <h4>My Cars</h4>
+
+            <div class="car-item">
+                <span>🚘</span>
+                <div>
+                    <b>Tesla</b>
+                    <small>Model X</small>
+                </div>
+            </div>
+
+            <div class="car-item">
+                <span>🚙</span>
+                <div>
+                    <b>Nissan</b>
+                    <small>Leaf</small>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="home-main">
+
+        <!-- TOP BAR -->
+<header class="topbar">
+
+    <div>
+        <small>Pages / Home</small>
+        <h2>Dashboard</h2>
+    </div>
+
+    <div class="topbar-right">
+        <span class="profile">U</span>
+    </div>
+
+</header>
+
+        <!-- HERO SECTION -->
+        <section class="home-hero">
+
+            <div class="home-hero-content">
+
+                <p class="home-tagline">
+                    SMART EV CHARGING MANAGEMENT
+                </p>
+
+                <h1>
+                    Power Your Journey.<br>
+                    <span>Charge Smarter.</span>
+                </h1>
+
+                <p>
+                    Welcome to EV HUB, an intelligent EV charging
+                    allocation system designed to manage charging
+                    requests and monitor charging point availability.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="/request" class="primary-btn">
+                        Request Charging →
+                    </a>
+
+                    <a href="/stations" class="secondary-btn">
+                        Explore Stations
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-hero-visual">
+
+                <div class="home-glow"></div>
+
+                <div class="home-bolt">⚡</div>
+
+                <p>SMART • CLEAN • ENERGY</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FEATURES -->
+        <section class="home-features">
+
+            <h2>Smart Charging Solutions</h2>
+
+            <p class="home-subtitle">
+                Efficient EV allocation powered by operating system concepts.
+            </p>
+
+            <div class="home-feature-grid">
+
+                <div class="home-feature-card">
+                    <span>🔋</span>
+                    <h3>Smart Allocation</h3>
+                    <p>
+                        Automatically assigns available charging
+                        points to incoming EV requests.
+                    </p>
+                </div>
+
+                <div class="home-feature-card">
+                    <span>⚙️</span>
+                    <h3>Semaphore Control</h3>
+                    <p>
+                        Controls simultaneous charging requests
+                        based on available charging points.
+                    </p>
+                </div>
+
+                <div class="home-feature-card">
+                    <span>🔒</span>
+                    <h3>Mutex Protection</h3>
+                    <p>
+                        Protects shared charger data and prevents
+                        race conditions during allocation.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="home-footer">
+            © 2026 EV HUB | EV Charging Station Allocation System
+        </footer>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

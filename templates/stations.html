@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV HUB | Stations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="stations-page">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">⚡ EV HUB</div>
+
+        <nav class="sidebar-nav">
+            <a href="/">▦ Dashboard</a>
+            <a href="/stations" class="active">◎ Stations</a>
+            <a href="/sessions">▤ Live Sessions</a>
+            <a href="/request">♙ Charging Request</a>
+            <a href="/admin">⚙ Admin</a>
+        </nav>
+
+        <div class="my-cars">
+            <h4>My Cars</h4>
+            <div class="car-item">
+                <span>🚘</span>
+                <div><b>Tesla</b><small>Model X</small></div>
+            </div>
+            <div class="car-item">
+                <span>🚙</span>
+                <div><b>Nissan</b><small>Leaf</small></div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="stations-main">
+
+        <header class="topbar">
+    <div>
+        <small>Pages / Stations</small>
+        <h2>Stations</h2>
+    </div>
+
+    <div class="topbar-right">
+        <span class="profile">U</span>
+    </div>
+</header>
+
+        <div class="stations-layout">
+
+            <section class="station-content">
+
+            <div class="map-heading">
+                <h3>📍 New York, United States of America</h3>
+            </div>
+
+                <div class="map-area">
+                    <div class="map-roads"></div>
+                    <span class="map-pin pin-one">⚡</span>
+                    <span class="map-pin pin-two">⚡</span>
+                    <span class="map-pin pin-three">⚡</span>
+                    <span class="map-pin pin-four">⚡</span>
+                </div>
+
+                <div class="station-cards">
+
+                    {% for charger in data.chargers %}
+
+                    <div class="station-card {% if charger == 'Charging' %}selected{% endif %}">
+
+                        <span class="station-icon">⚡</span>
+
+                        <h3>Charger {{ loop.index }}</h3>
+
+                        <h4>EV Charging Point</h4>
+
+                        <p>Status:</p>
+
+                        <p class="{% if charger == 'Available' %}green{% else %}charger-status{% endif %}">
+                            ● {{ charger }}
+                        </p>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </section>
+
+            <aside class="vehicle-panel">
+
+                <h3>Vehicle Stats</h3>
+
+                <div class="car-image">🚘</div>
+
+                <div class="vehicle-info">
+                    <div><small>EV</small><b>Tesla</b></div>
+                    <div><small>Battery</small><b class="green">80%</b></div>
+                    <div><small>Range</small><b>340 miles</b></div>
+                    <div><small>Temp</small><b>75.2°F</b></div>
+                </div>
+
+                <div class="vehicle-box">
+                    <small>Battery Status</small>
+                    <h3 class="green">⚡ Good</h3>
+                    <small>Time Left</small>
+                    <h3>4:56 h</h3>
+                    <small>Model</small>
+                    <h3>Tesla X</h3>
+                </div>
+
+                <div class="vehicle-box">
+                    <small>Nearby Station</small>
+                    <h3>Tesla Station</h3>
+                    <h2>1.5 mi</h2>
+                </div>
+
+                <div class="energy-box">
+                    <small>Avg Energy</small>
+                    <h3>67 kW</h3>
+                    <div class="energy-line">〰〰〰〰〰〰</div>
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

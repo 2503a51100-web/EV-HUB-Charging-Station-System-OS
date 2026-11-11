@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EV HUB | Charging Request</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="stations-page">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">⚡ EV HUB</div>
+
+        <nav class="sidebar-nav">
+            <a href="/">▦ Dashboard</a>
+            <a href="/stations">◎ Stations</a>
+            <a href="/sessions">▤ Live Sessions</a>
+            <a href="/request" class="active">♙ Charging Request</a>
+            <a href="/admin">⚙ Admin</a>
+        </nav>
+    </aside>
+
+    <main class="stations-main">
+        <header class="topbar">
+            <div>
+                <small>Pages / Charging Request</small>
+                <h2>Charging Request</h2>
+            </div>
+        </header>
+
+        <section class="request-container">
+            <div class="request-heading">
+                <p class="request-tag">EV CHARGING MANAGEMENT</p>
+                <h1>Request a <span>Charging Slot</span></h1>
+                <p>Enter your vehicle details to request an available charging point.</p>
+            </div>
+
+            <form class="request-form" action="/request" method="POST">
+
+                <label for="owner">Vehicle Owner Name</label>
+                <input type="text" id="owner" name="owner"
+                       placeholder="Enter your name" required>
+
+                <label for="vehicle">Vehicle Model</label>
+                <input type="text" id="vehicle" name="vehicle"
+                       placeholder="e.g. Tesla Model 3" required>
+
+                <label for="battery">Current Battery Level (%)</label>
+                <input type="number" id="battery" name="battery"
+                       min="0" max="100" placeholder="e.g. 25" required>
+
+                <label for="station">Select Charging Station</label>
+                <select id="station" name="station" required>
+                    <option value="">Choose a station</option>
+                    <option value="Station 1">Station 1</option>
+                    <option value="Station 2">Station 2</option>
+                    <option value="Station 3">Station 3</option>
+                </select>
+
+                <button type="submit" class="request-button">
+                    Request Charging →
+                </button>
+
+            </form>
+            
+{% if success %}
+<div class="request-success">
+    <h3>✓ Charging Request Submitted!</h3>
+    <p><strong>Owner:</strong> {{ owner }}</p>
+    <p><strong>Vehicle:</strong> {{ vehicle }}</p>
+    <p><strong>Battery:</strong> {{ battery }}%</p>
+    <p><strong>Station:</strong> {{ station }}</p>
+    <p>Your EV has been added to the charging allocation system.</p>
+</div>
+{% endif %}
+
+        </section>
+    </main>
+
+</body>
+</html>
